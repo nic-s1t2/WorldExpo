@@ -58,7 +58,7 @@ When declaring a Sub Object or Component of an actor, always use the following `
 This ensures it has the correct access in Blueprint Child Classes.
 
 <a name="2e1"><a/>
-### 0.1.3 Example Perforce Project Folder Setup
+#### 0.1.3 Example Perforce Project Folder Setup
 	
 As there are multiple projects we will outline the structure of each one, per stream. You will note the similarities, though.
 
