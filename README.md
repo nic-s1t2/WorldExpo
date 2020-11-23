@@ -45,9 +45,20 @@ World Expo is a large project with a number of different components:
 Standards for coding
 some common
 ```
+#### 0.1.1 General
 
-<a name="2e1"><a>
-### 0.1.1 Example Perforce Project Folder Setup
+All code classes should be pre-fixed with the appropriate Project prefix as outlined in the above table.
+
+#### 0.1.2 Actor Components
+
+When declaring a Sub Object or Component of an actor, always use the following `UPROPERTY` Macro:
+
+`UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))`
+
+This ensures it has the correct access in Blueprint Child Classes.
+
+<a name="2e1"><a/>
+### 0.1.3 Example Perforce Project Folder Setup
 	
 As there are multiple projects we will outline the structure of each one, per stream. You will note the similarities, though.
 
@@ -189,14 +200,6 @@ It may have no need for Assets.
     	|-- Art
 	|-- UI
 </pre>
-
-#### 0.1.2 Actor Components
-
-When declaring a Sub Object or Component of an actor, always use the following `UPROPERTY` Macro:
-
-`UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))`
-
-This ensures it has the correct access in Blueprint Child Classes.
 
 <a name="anc"></a>
 <a name="1"></a>
