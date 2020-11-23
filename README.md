@@ -20,6 +20,23 @@ Specific considerations
 Plugin/module information
 ```
 
+World Expo is a large project with a number of different components:
+
+| Project Name		| Prefix	| Stream Name			| Description									|
+| ----------------------| --------------| ------------------------------| ------------------------------------------------------------------------------|
+| [Dome Renderer](#DR)	| DR		| WE_DomeRenderer_[Branch]	| Both staging and production for done renderer systems.			|
+| [Kiosk](#KS)		| KT/KS		| WE_Kiosk_[Branch]		| Both the tablet (KT) and screen (KS) applications for customer kiosk.		|
+| [Orca](#OR)		| OR		| WE_Orchestration_[Branch]	| Orchestration systems for communication between Kiosk, Dome, and CCU.	|
+| [CCU](#CU)		| CU		| WE_CCU_[Branch]		| Central Control Unit systems, the brains of the operation.			|
+
+**Project Name** is the colleqial name for us humans to use.
+
+**Prefix** is for all code classes within that stream/project.
+
+**Stream Name** is the name of the stream the project will reside in. All are prefixed with **WE** as per Perforce naming conventions to keep streams of like-projects together.
+
+**Description** is a quick description of the project.
+
 <a name="prj-code"></a>
 <a name="0"></a>
 ### 0.1 Project Code Standards
@@ -31,31 +48,10 @@ some common
 
 <a name="2e1"><a>
 ### 0.1.1 Example Perforce Project Folder Setup
-<pre>
-|-- ProjectName
-    |-- ...
-    |-- Content
-    	|-- <a href="#2.2">ProjectName</a>
-            |-- Art
-            |-- <a href="#2.5">Core</a>
-            |-- <a href="#2.4">Maps</a>
-            |-- <a href="#2.8">MaterialLibrary</a>
-            |-- UI
-    |-- ...
-|-- ProjectNameAssets
-    |-- <a href="#0113">Exports</a>
-    	|-- Art
-	|-- UI
-    |-- <a href="#0112">SourceFiles</a>
-    	|-- Art
-	|-- UI
-</pre>
+	
+As there are multiple projects we will outline the structure of each one, per stream. You will note the similarities, though.
 
-Note the two Top Level folders.
-
-The first is the Unreal Engine Project itself, and then dictates the Content Folder contents therein.
-
-The second is the "Assets" folder, where we keep and commit all working and final assets for import into the Unreal Engine. This has two subdirectories:
+All project directories will have 1 or more Unreal Projects within them, however they may also have a **[ProjectName]Assets** directory. This is the "Assets" folder, where we keep and commit all working and final assets for import into the Unreal Engine. This has two subdirectories:
 
 [**Exports**](#0113): This should be a mirror of the Content folder inside the project itself, but containing all the raw assets: PNGs, WAVs, FBXs, etc. This is also the location where they should be imported from, so that should one be updated, you can simply use the "Reimport Asset" functionality of Unreal Engine to update the content in-engine. This should be able to be done from any machine with the correct Perforce configuration.
 
@@ -66,6 +62,133 @@ As a visualisation, you can think of the flow of assets, from most raw to comple
 **SourceFiles > Exports > Content**
 
 The reasons for this mirrored structure are listed in the following sub-sections.
+
+<a name="DR"></a>
+#### Dome Renderer
+
+Dome Renderer is comprised of two separate Unreal Projects with a shared Asset Directory.
+
+**Dome Staging** is for AIM to submit and test their content in.
+
+**Dome System** is for S1T2 to implement and finalise AIM's content into the "production" systems.
+
+<pre>
+|-- **DomeStaging**
+    |-- ...
+    |-- Content
+    	|-- <a href="#2.2">DomeStaging</a>
+            |-- Art
+            |-- <a href="#2.5">Core</a>
+            |-- <a href="#2.4">Maps</a>
+            |-- <a href="#2.8">MaterialLibrary</a>
+            |-- UI
+    |-- ...
+|-- **DomeSystem**
+    |-- ...
+    |-- Content
+    	|-- <a href="#2.2">DomeSystem</a>
+            |-- Art
+            |-- <a href="#2.5">Core</a>
+            |-- <a href="#2.4">Maps</a>
+            |-- <a href="#2.8">MaterialLibrary</a>
+            |-- UI
+    |-- ...
+|-- DomeRendererAssets
+    |-- <a href="#0113">Exports</a>
+    	|-- Art
+	|-- UI
+    |-- <a href="#0112">SourceFiles</a>
+    	|-- Art
+	|-- UI
+</pre>
+
+<a name="KS"></a>
+#### Kiosk
+
+The Kiosk is divided into two unreal projects with a single shared assets directory:
+
+**Kiosk Tablet** is the tablet which the end-user will interact with.
+
+**Kiosk Screen** is the large screen in the kiosk that the end-user will look at.
+
+This pairing means that the Tablet is where all input from the user is managed, and then communicated to the screen for output to the user.
+
+<pre>
+|-- **KioskTablet**
+    |-- ...
+    |-- Content
+    	|-- <a href="#2.2">KioskTablet</a>
+            |-- Art
+            |-- <a href="#2.5">Core</a>
+            |-- <a href="#2.4">Maps</a>
+            |-- <a href="#2.8">MaterialLibrary</a>
+            |-- UI
+    |-- ...
+|-- **KioskScreen**
+    |-- ...
+    |-- Content
+    	|-- <a href="#2.2">KioskScreen</a>
+            |-- Art
+            |-- <a href="#2.5">Core</a>
+            |-- <a href="#2.4">Maps</a>
+            |-- <a href="#2.8">MaterialLibrary</a>
+            |-- UI
+    |-- ...
+|-- KioskAssets
+    |-- <a href="#0113">Exports</a>
+    	|-- Art
+	|-- UI
+    |-- <a href="#0112">SourceFiles</a>
+    	|-- Art
+	|-- UI
+</pre>
+
+<a name="OR"></a>
+#### Orca
+
+Orca/Orchestration is the intermediary systems which allow the Kiosk, CCU, and Dome Renderer to communicate properly. This takes the form of a plugin.
+
+It lacks an asset directory as it has no need for one.
+
+<pre>
+|-- Orchestration
+    |-- ...
+    |-- Content
+    	|-- <a href="#2.2">Orchestration</a>
+            |-- Art
+            |-- <a href="#2.5">Core</a>
+            |-- <a href="#2.4">Maps</a>
+            |-- <a href="#2.8">MaterialLibrary</a>
+            |-- UI
+    |-- ...
+</pre>
+
+<a name="CU"></a>
+#### CCU
+
+The CCU (Central Control Unit) is something. I'm not actually clear on what, but I assum it is where many things come together and are handled by the overall systems.
+
+It may have no need for Assets.
+
+<pre>
+|-- CentralControlUnit
+    |-- ...
+    |-- Content
+    	|-- <a href="#2.2">CCU</a>
+            |-- Art
+            |-- <a href="#2.5">Core</a>
+            |-- <a href="#2.4">Maps</a>
+            |-- <a href="#2.8">MaterialLibrary</a>
+            |-- UI
+    |-- ...
+|-- CentralControlUnitAssets
+    |-- <a href="#0113">Exports</a>
+    	|-- Art
+	|-- UI
+    |-- <a href="#0112">SourceFiles</a>
+    	|-- Art
+	|-- UI
+</pre>
 
 #### 0.1.2 Actor Components
 
