@@ -57,6 +57,35 @@ When declaring a Sub Object or Component of an actor, always use the following `
 
 This ensures it has the correct access in Blueprint Child Classes.
 
+#### 0.1.3 Asset References
+
+All references to memory-heavy assets (Textures, Audio, Meshes) should be stored as `TSoftObjectPtr`. This ensures that in circumstances where multiple instances are loaded into memory we don't run out of ram and crash the editor/engine.
+
+For example, for storing a texture:
+
+```cpp
+UPROPERTY(EditDefaultsOnly)
+TSoftObjectPtr<UTexture2D> MyTexture;
+```
+
+The reason we make this `EditDefaultsOnly` is so that it can be edited per-instance, but not accessed directly.
+
+To access it we instead make a Getter that resolves the reference, either syncronously or asyncronously. Eg:
+
+```cpp
+// MyClass.h
+
+UFUNCTION(BlueprintCallable, BlueprintPure)
+UTexture2D* GetMyTexture() const;
+
+// MyClass.cpp
+AMyClass::GetMyTexture() const
+{
+	return MyTexture.LoadAsync();
+}
+
+```
+
 <a name="2e1"><a/>
 #### 0.1.3 Example Perforce Project Folder Setup
 	
