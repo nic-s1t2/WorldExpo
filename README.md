@@ -13,6 +13,10 @@
 <a name="0"></a>
 ## 0. Project Specific Information
 
+# WIP
+
+# All project specific info subject to change.
+
 ```
 Project specific information goes here
 Class prefixes
