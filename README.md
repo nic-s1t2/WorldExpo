@@ -13,23 +13,12 @@
 <a name="0"></a>
 ## 0. Project Specific Information
 
-# WIP
-
-# All project specific info subject to change.
-
-```
-Project specific information goes here
-Class prefixes
-Specific considerations
-Plugin/module information
-```
-
-World Expo is a large project with a number of different components:
+World Expo is a large project with a number of different components, all prefixed by `WE`:
 
 | Project Name		| Prefix	| Stream Name			| Description									|
 | ----------------------| --------------| ------------------------------| ------------------------------------------------------------------------------|
 | [Dome Renderer](#DR)	| DR		| WE_DomeRenderer_[Branch]	| Both staging and production for done renderer systems.			|
-| [Pod](#PS)		| PT/PS		| WE_Pod_[Branch]		| Both the tablet (PT) and screen (PS) applications for customer kiosk/pod.	|
+| [Kiosk](#KS)		| KT/KP		| WE_Pod_[Branch]		| Both the tablet (KT) and screen/Pod (KP) applications for customer kiosk.	|
 | [CCU](#CU)		| CU		| WE_CCU_[Branch]		| Central Control Unit systems, the brains of the operation.			|
 
 **Project Name** is the colleqial name for us humans to use.
@@ -39,6 +28,13 @@ World Expo is a large project with a number of different components:
 **Stream Name** is the name of the stream the project will reside in. All are prefixed with **WE** as per Perforce naming conventions to keep streams of like-projects together.
 
 **Description** is a quick description of the project.
+
+Note that these conventions apply to documentation as well, where appropriate. Some examples:
+
+`WE_KS_Diagram` 	<- A diagram for the Kiosk Project
+`WE_CU_APIReference`	<- API reference for the CCU
+
+In this way documents can be quickly assessed and understood.
 
 <a name="prj-code"></a>
 <a name="0"></a>
@@ -145,32 +141,32 @@ Dome Renderer is comprised of two separate Unreal Projects with a shared Asset D
 	|-- UI
 </pre>
 
-<a name="PS"></a>
-#### Pod
+<a name="KS"></a>
+#### Kiosk
 
 The Kiosk is divided into two unreal projects with a single shared assets directory:
 
-**Pod Tablet** is the tablet which the end-user will interact with.
+**Kiosk Tablet** is the tablet which the end-user will interact with.
 
-**Pod Screen** is the large screen in the kiosk/pod that the end-user will look at.
+**Kiosk Pod** is the large screen in the kiosk/pod that the end-user will look at.
 
 This pairing means that the Tablet is where all input from the user is managed, and then communicated to the screen for output to the user.
 
 <pre>
-|-- **PodTablet**
+|-- **KioskTablet**
     |-- ...
     |-- Content
-    	|-- <a href="#2.2">PodTablet</a>
+    	|-- <a href="#2.2">KioskTablet</a>
             |-- Art
             |-- <a href="#2.5">Core</a>
             |-- <a href="#2.4">Maps</a>
             |-- <a href="#2.8">MaterialLibrary</a>
             |-- UI
     |-- ...
-|-- **PodScreen**
+|-- **KioskPod**
     |-- ...
     |-- Content
-    	|-- <a href="#2.2">PodScreen</a>
+    	|-- <a href="#2.2">KioskPod</a>
             |-- Art
             |-- <a href="#2.5">Core</a>
             |-- <a href="#2.4">Maps</a>
@@ -189,9 +185,9 @@ This pairing means that the Tablet is where all input from the user is managed, 
 <a name="CU"></a>
 #### CCU
 
-The CCU (Central Control Unit) is something. I'm not actually clear on what, but I assum it is where many things come together and are handled by the overall systems.
+The CCU (Central Control Unit) is a central server in charge of timing and orchestrating the whole show. It will require an Unreal Engine Plugin for any Unreal project to interact with it. This stream is where that Plugin is to be Developed.
 
-It may have no need for Assets.
+It has no need for Assets.
 
 <pre>
 |-- CentralControlUnit
@@ -204,13 +200,6 @@ It may have no need for Assets.
             |-- <a href="#2.8">MaterialLibrary</a>
             |-- UI
     |-- ...
-|-- CentralControlUnitAssets
-    |-- <a href="#0113">Exports</a>
-    	|-- Art
-	|-- UI
-    |-- <a href="#0112">SourceFiles</a>
-    	|-- Art
-	|-- UI
 </pre>
 
 <a name="anc"></a>
