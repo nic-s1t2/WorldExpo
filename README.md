@@ -29,8 +29,7 @@ World Expo is a large project with a number of different components:
 | Project Name		| Prefix	| Stream Name			| Description									|
 | ----------------------| --------------| ------------------------------| ------------------------------------------------------------------------------|
 | [Dome Renderer](#DR)	| DR		| WE_DomeRenderer_[Branch]	| Both staging and production for done renderer systems.			|
-| [Kiosk](#KS)		| KT/KS		| WE_Kiosk_[Branch]		| Both the tablet (KT) and screen (KS) applications for customer kiosk.		|
-| [Orca](#OR)		| OR		| WE_Orchestration_[Branch]	| Orchestration systems for communication between Kiosk, Dome, and CCU.	|
+| [Pod](#PS)		| PT/PS		| WE_Pod_[Branch]		| Both the tablet (PT) and screen (PS) applications for customer kiosk/pod.	|
 | [CCU](#CU)		| CU		| WE_CCU_[Branch]		| Central Control Unit systems, the brains of the operation.			|
 
 **Project Name** is the colleqial name for us humans to use.
@@ -146,32 +145,32 @@ Dome Renderer is comprised of two separate Unreal Projects with a shared Asset D
 	|-- UI
 </pre>
 
-<a name="KS"></a>
-#### Kiosk
+<a name="PS"></a>
+#### Pod
 
 The Kiosk is divided into two unreal projects with a single shared assets directory:
 
-**Kiosk Tablet** is the tablet which the end-user will interact with.
+**Pod Tablet** is the tablet which the end-user will interact with.
 
-**Kiosk Screen** is the large screen in the kiosk that the end-user will look at.
+**Pod Screen** is the large screen in the kiosk/pod that the end-user will look at.
 
 This pairing means that the Tablet is where all input from the user is managed, and then communicated to the screen for output to the user.
 
 <pre>
-|-- **KioskTablet**
+|-- **PodTablet**
     |-- ...
     |-- Content
-    	|-- <a href="#2.2">KioskTablet</a>
+    	|-- <a href="#2.2">PodTablet</a>
             |-- Art
             |-- <a href="#2.5">Core</a>
             |-- <a href="#2.4">Maps</a>
             |-- <a href="#2.8">MaterialLibrary</a>
             |-- UI
     |-- ...
-|-- **KioskScreen**
+|-- **PodScreen**
     |-- ...
     |-- Content
-    	|-- <a href="#2.2">KioskScreen</a>
+    	|-- <a href="#2.2">PodScreen</a>
             |-- Art
             |-- <a href="#2.5">Core</a>
             |-- <a href="#2.4">Maps</a>
@@ -185,26 +184,6 @@ This pairing means that the Tablet is where all input from the user is managed, 
     |-- <a href="#0112">SourceFiles</a>
     	|-- Art
 	|-- UI
-</pre>
-
-<a name="OR"></a>
-#### Orca
-
-Orca/Orchestration is the intermediary systems which allow the Kiosk, CCU, and Dome Renderer to communicate properly. This takes the form of a plugin.
-
-It lacks an asset directory as it has no need for one.
-
-<pre>
-|-- Orchestration
-    |-- ...
-    |-- Content
-    	|-- <a href="#2.2">Orchestration</a>
-            |-- Art
-            |-- <a href="#2.5">Core</a>
-            |-- <a href="#2.4">Maps</a>
-            |-- <a href="#2.8">MaterialLibrary</a>
-            |-- UI
-    |-- ...
 </pre>
 
 <a name="CU"></a>
