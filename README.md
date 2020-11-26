@@ -31,7 +31,7 @@ World Expo is a large project with a number of different components, all prefixe
 
 Note that these conventions apply to documentation as well, where appropriate. Some examples:
 
-`WE_KS_Diagram` 	<- A diagram for the Kiosk Project
+`WE_KS_Diagram` 	<- A diagram for the Kiosk Project  
 `WE_CU_APIReference`	<- API reference for the CCU
 
 In this way documents can be quickly assessed and understood.
