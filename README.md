@@ -18,7 +18,7 @@ World Expo is a large project with a number of different components, all prefixe
 | Project Name		| Prefix	| Stream Name			| Description									|
 | ----------------------| --------------| ------------------------------| ------------------------------------------------------------------------------|
 | [Dome Renderer](#DR)	| DR		| WE_DomeRenderer_[Branch]	| Both staging and production for done renderer systems.			|
-| [Kiosk](#KS)		| KT/KP		| WE_Pod_[Branch]		| Both the tablet (KT) and screen/Pod (KP) applications for customer kiosk.	|
+| [Kiosk](#KS)		| KT/KP		| WE_Kiosk_[Branch]		| Both the tablet (KT) and screen/Pod (KP) applications for customer kiosk.	|
 | [CCU](#CU)		| CU		| WE_CCU_[Branch]		| Central Control Unit systems, the brains of the operation.			|
 
 **Project Name** is the colleqial name for us humans to use.
