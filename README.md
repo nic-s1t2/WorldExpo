@@ -152,6 +152,10 @@ The Kiosk is divided into two unreal projects with a single shared assets direct
 
 This pairing means that the Tablet is where all input from the user is managed, and then communicated to the screen for output to the user.
 
+Likewise, the Kiosks come in groups of three, call **Groups** which will be titled with their cardinal location, eg: North Group (N), East Group (E), South-West Group (SW).
+
+**Note:** The CCU Plugin is being developed in the Kiosk project, and then is automatically merged into the CCU and Dome Renderer projects after a successful build.
+
 <pre>
 |-- **KioskTablet**
     |-- ...
@@ -187,7 +191,9 @@ This pairing means that the Tablet is where all input from the user is managed, 
 
 The CCU (Central Control Unit) is a central server in charge of timing and orchestrating the whole show. It will require an Unreal Engine Plugin for any Unreal project to interact with it. This stream is where that Plugin is to be Developed.
 
-It has no need for Assets.
+It has no need for Assets. This stream is purely for maintaining an empty work environment for the plugin should isolation testing be needed.
+
+**Note:** The CCU Plugin is being developed in the Kiosk project, and then is automatically merged into the CCU and Dome Renderer projects after a successful build.
 
 <pre>
 |-- CentralControlUnit
