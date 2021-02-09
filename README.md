@@ -613,6 +613,7 @@ When working on multiple projects it is common for a team to copy assets from on
 These dependencies are what can easily get you into trouble. If two project's assets do not have a top level folder and they happen to have similarly named or already previously migrated assets, a new migration can accidentally wipe any changes to the existing assets.
 
 A good work around to this is to right click on the asset you wish to migrate and use the 'reference viewer' to find all dependancies of that asset and move them all to the 'Content' folder. Once they are in the content folder, you can migrate the asset to the other projects content folder and then move the assets into the correct folders of that project.
+
 *Always double check there are no dependancies left in folders when using this method. You will see this when you select the asset to migrate, it will bring up a box showing all the locations of the dependancies of that asset. As long as they are all coming from the 'content' folder you are safe to migrate without bringing unwanted folders to the new project.
 
 After a migration, safe merging of assets can be done using the 'Replace References' tool in the content browser with the added clarity of assets not belonging to a project's top level folder are clearly pending a merge. Once assets are merged and fully migrated, there shouldn't be another top level folder in your Content tree. This method is _100%_ guaranteed to make any migrations that occur completely safe.
